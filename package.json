@@ -19,13 +19,5 @@
     "node": "^19.8.1",
     "node.js": "^0.0.1-security",
     "pug": "^3.0.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ishanshi-B/Pokemon-Database-Project"
-  },
-  "bugs": {
-    "url": "https://github.com/Ishanshi-B/Pokemon-Database-Project/issues"
-  },
-  "homepage": "https://github.com/Ishanshi-B/Pokemon-Database-Project/readme"
+  }
 }
