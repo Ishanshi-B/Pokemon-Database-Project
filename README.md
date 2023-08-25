@@ -1,2 +1,31 @@
 # CS340_Class_Project
- The class project that Ishanshi Bhardwaj worked on together
+Class project that was done on the school server. The requirements included:
+
+## Data Definition Queries:
+The updated version of SQL file that provides a clean import-able of the database Server that is used to host your CS340 database. 
+
+## Data Manipulation Queries:
+The updated version of the SQL file which provides all the DML queries in the format described in Step 4. These queries should be consistent with those in your server-side code. 
+
+## Website Functionality:
+All the functionalities described below are implemented:
+1. Your database should be pre-populated with sample data. At least three rows per table is expected. The sample data should illustrate a table's functionality, e.g. if the table is part of a many-to-many relationship, the sample data should depict M:M.
+2. Your database should have at least 4 entities and at least 4 relationships, one of which must be a many-to-many relationship.  The entities and relationships should implement the operational requirements of your project.
+You are creating a web interface for data tables, so the primary user is the administrator of this database.
+3. It is NOT a customer facing website; thus there is no need for login page; sessions; register/password; shopping cart; check-out; etc.  While having those pages would be helpful in many customer facing applications, the purpose of this project is to provide a UI for your tables. 
+Put another way, if you had 4 entities that were implemented as 5 tables in a database, then we expect roughly 5 web app pages as a front end UX for each of the 5 tables in your database.
+One exception is oftentimes it works better for the UX to have a single web page for a Many-to-Many relationship between 2 tables (so the user doesn't have to view two pages to complete a transaction in both tables). So in that case if you had 4 entities that were implemented as 5 tables, with 1 many-to-many relationship between 2 of those tables, and the 2 tables in that m:m were managed on a single web page, then we expect 4 web pages in the project. 
+4. Some students may choose to add a home page to their project, which is acceptable but not required. To continue the example from the previous item, adding a home page would be a 5th page in the project. 
+5. It should be possible to INSERT entries into every table individually.
+Every table should be used in at least one SELECT query. For the SELECT queries, it is fine to just display the content of the tables. It is generally not appropriate to have only a single query that joins all tables and displays them.
+6. You need to include one DELETE and one UPDATE function in your website, for any one of the entities. In addition, it should be possible to add and remove things from at least one many-to-many relationship and it should be possible to add things to all relationships. This means you need SELECT & INSERT functionalities for all relationships as well as entities. And DELETE & UPDATE for least one m:m relationship.
+Note that it's not acceptable to require the user to enter IDs for foreign keys. Instead your website needs to use a dynamically populated drop-down list or have the ability to search using text instead of entering in the ID. This Dynamic drop-down/Search functionality should be present for at least one entity. 
+7. In one relationship, you should be able to set the foreign key value to NULL using UPDATE, that removes the relationship. In case none of the one-to-many relationships in your database has optional participation, you would need to change that to make sure one can have NULL values. For example, in the table Orders, there may be two FKs: the employeeID and the customerID which create relations to the Employees and Customers tables. It may not be sensible for the Customer to be optional. But the Employee could be optional. Thus, we would expect that in the Orders INSERT and UPDATE pages it is possible to set the employeeID to a value or else to NULL. 
+You should be able to DELETE a record from a M:M relationship without creating a data anomaly in the related tables. For example, DELETEing a Customer should handle any Orders that were made by the Customer. This can be done by either by setting the CustomerID to NULL, or else by DELETEing any Order(s) associated with that Customer. More on how this can be done in Week 5 when we cover MySQL CASCADELinks to an external site.. 
+To continue the example from above, if you have 5 tables in your schema, then at a minimum, we expect you to implement 5 SELECTs, 5 INSERTs, 1 UPDATE (1 NULLable relationship), 1 DELETE (M:M), and 1 Dynamic drop-down/Search for a total of 14 functions. 
+
+## Style:
+Website: Organization of entities and CRUD operations on the site should be logical and usable. There needs to be tabular data should be displayed in tables and form elements should be reasonably grouped. Section headers for parts of your pages/forms would definitely make your site easier to navigate. Any design elements should assist user in understanding and locating any CRUD elements. Site navigation should not confuse. The use of white space, colors, fonts, graphic elements and/or alignment can help organize material, and should be consistent and not detract from the content. Avoid errors in grammar, capitalization, punctuation and spelling. Using html date input for dates, and highlighting required fields are examples of good quality design. 
+PDF: Your write-up in the documentation should be well formatted and divided into sections for easy navigation and readability.
+Code: Project code should have a sensible organization with self-documenting folders and file names. Server-side code should be divided into manageable blocks/files instead of large monolithic code blocks.  Use meaningful variable names and have brief comments to explain logic.
+Citations: Any code that is not original should have a citation to clearly credit the source. IOW, if you have adapted the CS340 starter app code this should be clearly stated in the readme (e.g. "All code is based on the CS 340 starter code, with the exception of...") and also in the source code to describe the extent to which any non-original sources were used (e.g. "this module adapted from the starter code"). Highlight your original work (e.g. "update M:N entirely our own work"). HTML and JavaScript files should have comments and be structured to support clarity and readability.
