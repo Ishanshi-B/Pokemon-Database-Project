@@ -1,0 +1,99 @@
+<!-- pokedex.hbs -->
+<!--Code adapted from cs340 nodejs-starter-app: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data !-->
+
+<html>
+<head>
+<title>Pokédex</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Pokédex</h1>
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Login/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+  <h4>A complete list of every Pokémon!</h4>
+
+  <div id="browse" style="display: block">
+    <p><strong>Browse Pokémon</strong></p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>HP</th>
+        <th>Atk</th>
+        <th>Def</th>
+        <th>Sp. Atk</th>
+        <th>Sp. Def</th>
+        <th>Speed</th>
+        <th>Legendary?</th>
+        <th>Regional Form</th>
+        <th>Type 1</th>
+        <th>Type 2</th>
+      </tr>
+      {{#each pokemon_data}}
+        <tr>
+          <td>{{this.pokemon_id}}</td>
+          <td>{{this.pokemon_name}}</td>
+          <td>{{this.pokemon_hp}}</td>
+          <td>{{this.pokemon_attack}}</td>
+          <td>{{this.pokemon_defense}}</td>
+          <td>{{this.pokemon_sp_atk}}</td>
+          <td>{{this.pokemon_sp_def}}</td>
+          <td>{{this.pokemon_speed}}</td>
+          <td>{{this.pokemon_is_legendary}}</td>
+          <td>{{this.pokemon_regional_form}}</td>
+          <td>{{this.type1_id}}</td>
+          <td>{{this.type2_id}}</td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="search" style="display: block"> <!-- update -->
+    <form id="searchPokedex">
+      <legend><strong>Search Pokédex</strong></legend>
+      <fieldset class="fields">
+        <label>ID</label> 
+        <input type="text" name="id" id="input-id-html-search">
+      </fieldset>
+      <input class="btn" type="submit" id="SearchPokedex" value="Search">
+      <a href='/pokedex.hbs'><button>Reset</button></a>
+
+    </form> 
+  </div>
+  
+  <p>&nbsp;</p>
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+</body>
+</html>

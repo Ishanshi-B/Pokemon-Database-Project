@@ -1,0 +1,127 @@
+<!-- games.hbs -->
+<!--Citation: Some of the code used in this project are adapted from https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<html>
+<head>
+<title>Games</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Games</h1>
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Login/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+
+  {{!-- Create a table --}}
+  <h4>A complete list of every game!</h4>
+    <div id="browse" style="display: block">
+  <p><strong>Browse Games</strong></p>
+    <table border="1" cellpadding="5" id="games-table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Generation</th>
+        <th>Delete</th>
+      </tr>
+      <!--Create the game table to show the data -->
+      {{#each game_data}}
+        <tr data-value={{this.game_id}}>
+          <td>{{this.game_id}}</td>
+          <td>{{this.game_name}}</td>
+          <td>{{this.game_generation}}</td>
+          <td><button onclick="deleteGames({{this.game_id}})">Delete</button></td>
+        </tr>
+      {{/each}}
+    </table>
+    <script src="/js/delete_games.js"></script>
+
+  </div>
+  
+  <p>&nbsp;</p>
+
+  <div id="search" style="display: block"> <!-- Search -->
+    <form id="searchTypes">
+      <legend><strong>Search Games</strong></legend>
+      <fieldset class="fields">
+      <label>ID</label> 
+      <input type="text" name="id" id="input-id-html-search">
+
+      </fieldset>
+      <input class="btn" type="submit" id="SearchGames" value="Search">
+      <a href='/games.hbs'><button>Reset</button></a>
+    </form> 
+
+  </div>
+  
+  <p>&nbsp;</p>
+
+  <div id="insert" style="display: block"> <!-- insert -->
+  <form id="add-games-form" method="POST" action="/add-games-form">
+        <legend><strong>Add Game</strong></legend>
+        <fieldset class="fields">
+          <label>Name</label> <input type="text" name="game_name" id="game_name" required>
+          <label>Generation</label> <input type="text" name="game_generation" id="game_generation" required>
+        </fieldset>
+        <input class="btn" type="submit" id="addGames" value="Add Game">
+        <input class="btn" type="button" value="Cancel">
+  </form> 
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="update" style="display: block"> <!-- update -->
+    <form id="update-game-form">
+      <legend><strong>Update Game</strong></legend>
+      <fieldset class="fields"> 
+         <label for="gameSelect">Games</label>
+            <select name="gameSelect" id="gameSelect">
+              <!-- Select the Game ID to update -->
+                <option value="title">Select a Game</option>
+                {{#each game_data}}
+                <option value="{{this.game_id}}">{{this.game_name}}</option>
+                {{/each}}           
+            </select>
+        <label>Name</label> <input type="text" name="name " id="update_name" required>
+        <label>Generation</label> <input type="text" name="generation" id="update_generation" required>
+      </fieldset>
+      <input class="btn" type="submit" id="updateGame" value="updateGame">
+    </form> 
+        <script src="./js/update_games.js"></script>
+
+  </div>
+
+  <p>&nbsp;</p>
+
+
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+</body>
+</html>

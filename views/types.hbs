@@ -1,0 +1,123 @@
+<!-- types.hbs -->
+<!--Code adapted from cs340 nodejs-starter-app: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data !-->
+
+<html>
+<head>
+<title>Types</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Types</h1>
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Login/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+  <h4>A complete list of every type!</h4>
+  <div id="browse" style="display: block">
+  <p><strong>Browse Types</strong></p>
+
+  <table border="1" cellpadding="5" id="types-table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Weaknesses</th>
+      <th>Delete</th>
+     </tr>
+    <!--Code adapted from cs340 nodejs-starter-app: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data !-->
+     {{#each type_data}}
+        <tr data-value={{this.type_id}}>
+          <td>{{this.type_id}}</td>
+          <td>{{this.type_name}}</td>
+          <td>{{this.type_weaknesses}}</td>
+          <td><button onclick="deleteTypes({{this.type_id}})">Delete</button></td>
+        </tr>
+      {{/each}}
+  </table>
+  <script src="/js/delete_types.js"></script>
+
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="search" style="display: block"> <!-- search -->
+    <form id="searchTypes">
+      <legend><strong>Search Types</strong></legend>
+      <fieldset class="fields">
+        <label>ID</label> 
+            <input type="text" name="id" id="input-id-html-search">
+      </fieldset>
+      <input class="btn" type="submit" id="SearchTypes" value="Search">
+      <a href='/types.hbs'><button>Reset</button></a>
+    </form> 
+  </div>
+  
+  <p>&nbsp;</p>
+
+  <div id="insert" style="display: block"> <!-- insert -->
+    <form id="add-types-form" method="POST" action="/add-types-form">
+        <legend><strong>Add Type</strong></legend>
+        <fieldset class="fields">
+          <label>Name</label> <input type="text" name="type_name" required>
+          <label>Weaknesses</label> <input type="text" name="type_weaknesses" required>
+        </fieldset>
+        <input class="btn" type="submit" id="addType" value="Add Type">
+        <input class="btn" type="button" value="Cancel">
+    </form> 
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="update" style="display: block"> <!-- update -->
+    <form id="update-type-form">
+      <legend><strong>Update Type</strong></legend>
+      <fieldset class="fields">
+        <label for="typeSelect">Types</label>
+            <select name="typeSelect" id="typeSelect" >
+                <option value="title">Select an ID </option>
+                {{#each type_data}}
+                <option value="{{this.type_id}}">{{this.type_id}}</option>
+                {{/each}}           
+            </select>
+        <label>Name</label> <input type="text" name="name" id="update_name" required>
+        <label>Weaknesses</label> <input type="text" name="weaknesses" id="update_weaknesses" required>
+      </fieldset>
+      <input class="btn" type="submit" id="updateType" value="updateType">
+        
+    </form>
+    <script src="./js/update_types.js"></script> 
+  </div>
+
+  <p>&nbsp;</p>
+
+
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+</body>
+</html>

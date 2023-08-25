@@ -1,0 +1,84 @@
+<!-- intersection_tables.hbs -->
+<!--Citation: Some of the code used in this project are adapted from https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<html>
+<head>
+<title>Intersection Tables</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Intersection Tables</h1>
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Login/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+  <h4>A way to keep track of all of our intersection tables!</h4>
+
+  <p><strong>Browse Save_Files</strong></p>
+  <table border="1" cellpadding="5">
+    <legend>Transaction table between Users and Games</legend>
+    <tr>
+      <th>User Name</th>
+      <th>Game ID</th>
+      <th>Save File ID</th>
+    </tr>
+          {{#each data}}
+          <td>{{this.user}}</td>
+          <td>{{this.game}}</td>
+          <td>{{this.save}}</td>
+
+        </tr>
+      {{/each}}
+
+    </tr>
+  </table>
+
+  <p><strong>Browse Game_Type_Intersection</strong></p>
+  <table border="1" cellpadding="5">
+    <legend>Transaction table between Games and Types</legend>
+    <tr>
+      <th>Game ID</th>
+      <th>Type ID</th>
+    </tr>
+          {{#each planets}}
+          <td>{{this.game}}</td>
+          <td>{{this.type}}</td>
+
+        </tr>
+      {{/each}}
+
+    </tr>
+  </table>
+
+  <p>&nbsp;</p>
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+</body>
+</html>

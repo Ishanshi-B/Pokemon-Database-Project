@@ -1,0 +1,31 @@
+{
+  "name": "class_project",
+  "version": "1.0.0",
+  "description": "Ishanshi Bhardwaj",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ishanshi Bhardwaj",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "forever": "^0.14.2",
+    "handlebars": "^4.7.7",
+    "hbs": "^4.2.0",
+    "mssql": "^9.1.1",
+    "mysql": "^2.18.1",
+    "node": "^19.8.1",
+    "node.js": "^0.0.1-security",
+    "pug": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ishanshi-B/Pokemon-Database-Project "
+  },
+  "bugs": {
+    "url": "https://github.com/Ishanshi-B/Pokemon-Database-Project/issues"
+  },
+  "homepage": "https://github.com/Ishanshi-B/Pokemon-Database-Project/issues"
+}

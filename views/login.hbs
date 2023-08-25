@@ -1,0 +1,125 @@
+<!-- login.hbs -->
+<!--Code adapted from cs340 nodejs-starter-app: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data !-->
+
+<html>
+<head>
+<title>Users</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Users</h1>
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Users/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+  <h4>A complete list of every user!</h4>
+  <div id="browse" style="display: block">
+  <p><strong>Browse Users</strong></p>
+
+  <table border="1" cellpadding="5" id="user-table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Delete</th>
+
+
+     </tr>
+     {{#each user_data}}
+        <tr data-value={{this.user_id}}>
+          <td>{{this.user_id}}</td>
+          <td>{{this.user_name}}</td>
+          <td>{{this.user_email}}</td>
+
+          <td><button onclick="deleteUsers({{this.user_id}})">Delete</button></td>
+        </tr>
+      {{/each}}
+  </table>
+  <script src="/js/delete_users.js"></script>
+
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="search" style="display: block"> <!-- search -->
+    <form id="searchUsers">
+      <legend><strong>Search Users</strong></legend>
+      <fieldset class="fields">
+        <label>ID</label> 
+            <input type="text" name="id" id="input-id-html-search">
+      </fieldset>
+      <input class="btn" type="submit" id="SearchUser" value="Search">
+      <a href='/login.hbs'><button>Reset</button></a>
+    </form> 
+  </div>
+  
+  <p>&nbsp;</p>
+
+  <div id="insert" style="display: block"> <!-- insert -->
+    <form id="add-users-form" method="POST" action="/add-users-form" required>
+        <legend><strong>Add Users</strong></legend>
+        <fieldset class="fields">
+          <label>Name</label> <input type="text" name="user_name"  id= "user_name" required>
+          <label>Email</label> <input type="text" name="user_email" id= "user_email"  required>
+        </fieldset>
+        <input class="btn" type="submit" id="addUser" value="addUser">
+
+    </form> 
+  </div>
+
+  <p>&nbsp;</p>
+
+  <div id="update" style="display: block"> <!-- update -->
+    <form id="update-user-form">
+      <legend><strong>Update User</strong></legend>
+      <fieldset class="fields">
+        <label for="userSelect">Users</label>
+            <select name="userSelect" id="userSelect">
+                <option value="title">Select an ID </option>
+                {{#each user_data}}
+                <option value="{{this.user_id}}">{{this.user_id}}</option>
+                {{/each}}           
+            </select>
+        <label>Name</label> <input type="text" name="name" id="update_name" required> 
+        <label>Email</label> <input type="text" name="weaknesses" id="update_email" required>
+      </fieldset>
+      <input class="btn" type="submit" id="updateUser" value="updateUser">
+        
+    </form>
+    <script src="./js/update_users.js"></script> 
+  </div>
+
+  <p>&nbsp;</p>
+
+
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+</body>
+</html>

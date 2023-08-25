@@ -1,0 +1,135 @@
+<!-- pokemon.hbs -->
+<!--Code adapted from cs340 nodejs-starter-app: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data !-->
+
+<html>
+<head>
+<title>Pokémon</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Pokémon</h1> <!-- title -->
+
+  <table border="1">
+    <tr>
+      <th>
+        <a href="index.hbs">Home</a>
+      </th>
+      <th>
+        <a href="login.hbs">Login/Register</a>
+      </th>
+      <th>
+        <a href="pokemon.hbs">Pokémon</a>
+      </th>
+      <th>
+        <a href="pokedex.hbs">Pokédex</a>
+      </th>
+      <th>
+        <a href="games.hbs">Games</a>
+      </th>
+      <th>
+        <a href="types.hbs">Types</a>
+      </th>
+      <th>
+        <a href="intersection_tables.hbs">Intersection Tables</a>
+      </th>
+    </tr>
+  </table>
+
+
+  <hr color="black">
+
+  <h4>A list of every Pokémon that you have caught!</h4> <!-- list -->
+    <div id="browse" style="display: block">
+    <p><strong>Browse Pokémon</strong></p>
+    <table border="1" cellpadding="5" id="pokemon-table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>HP</th>
+        <th>Atk</th>
+        <th>Def</th>
+        <th>Sp. Atk</th>
+        <th>Sp. Def</th>
+        <th>Speed</th>
+        <th>Legendary?</th>
+        <th>Regional Form</th>
+        <th>Type 1</th>
+        <th>Type 2</th>
+        <th>Save ID</th>
+
+        <th>Delete</th>
+      </tr>
+      {{#each pokemon_data}}
+        <tr data-value={{this.pokemon_id}}>
+          <td>{{this.pokemon_id}}</td>
+          <td>{{this.pokemon_name}}</td>
+          <td>{{this.pokemon_hp}}</td>
+          <td>{{this.pokemon_attack}}</td>
+          <td>{{this.pokemon_defense}}</td>
+          <td>{{this.pokemon_sp_atk}}</td>
+          <td>{{this.pokemon_sp_def}}</td>
+          <td>{{this.pokemon_speed}}</td>
+          <td>{{this.pokemon_is_legendary}}</td>
+          <td>{{this.pokemon_regional_form}}</td>
+          <td>{{this.type1_id}}</td>
+          <td>{{this.type2_id}}</td>
+          <td>{{this.save_id}}</td>
+          <td><button onclick="deletePokemon({{this.pokemon_id}})">Delete</button></td>
+        </tr>
+      {{/each}}
+    </table>
+    <script src="/js/delete_pokemon.js"></script>
+
+  </div>
+  
+  <p>&nbsp;</p>
+
+<div id="search" style="display: block"> <!-- update -->
+    <form id="searchPokedex">
+      <legend><strong>Search Pokemon</strong></legend>
+      <fieldset class="fields">
+        <label>ID</label> 
+        <input type="text" name="id" id="input-id-html-search">
+      </fieldset>
+      <input class="btn" type="submit" id="SearchPokedex" value="Search">
+      <a href='/pokemon.hbs'><button>Reset</button></a>
+    </form> 
+  </div>
+
+      <br>
+
+  <div id="insert" style="display: block"> <!-- insert -->
+    <form id="add-pokemon-form" method="POST" action="/add-pokemon-form">
+      <legend style="text-align: center"><strong>Add Pokémon</strong></legend>
+      <fieldset style="text-align: right">
+        <label>Name</label> <input type="text" name="pokemon_name" id="pokemon_name" required> <br>
+        <label>HP</label> <input type="text" name="pokemon_hp" id="pokemon_hp" required> <br>
+        <label>Atk</label> <input type="text" name="pokemon_attack" id="pokemon_attack" required> <br>
+        <label>Def</label> <input type="text" name="pokemon_defense" id="pokemon_defense" required> <br>
+        <label>Sp. Atk</label> <input type="text" name="pokemon_sp_atk" id="pokemon_sp_atk" required> <br>
+        <label>Sp. Def</label> <input type="text" name="pokemon_sp_def" id="pokemon_sp_def" required> <br>
+        <label>Speed</label> <input type="text" name="pokemon_speed" id="pokemon_speed" required> <br>
+        <label>Legendary?</label>
+          <select name="pokemon_is_legendary" id="pokemon_is_legendary">
+            <option>1</option>
+            <option>0</option>
+          </select> <br>
+        <label>Regional Form</label> <input type="text" name="pokemon_regional_form" id="pokemon_regional_form" required> <br>
+        <label>Type 1</label> <input type="text" name="type1_id" id="type1_id" required> <br>
+        <label>Type 2</label> <input type="text" name="type2_id" id="type2_id"> <br>
+        <label>Save ID</label> <input type="text" name="save_id" id="save_id"> <br>
+
+
+      </fieldset>
+        <input class="btn" type="submit" id="addPokemon" value="addPokemon">
+    </form> 
+  </div>
+
+  <p>&nbsp;</p>
+
+
+  <img src="img/Poke_Ball_Icon.svg" alt="Pokeball" width="200" height="200">
+
+</body>
+</html>
